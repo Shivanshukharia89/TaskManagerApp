@@ -1,0 +1,12 @@
+<h1>Your Tasks</h1>
+
+<h2>All Tasks</h2>
+<%= render partial: 'tasks', locals: { tasks: @tasks } %>
+
+<h2>Overdue Tasks</h2>
+<%= render partial: 'tasks', locals: { tasks: @overdue_tasks } %>
+
+<h2>Completed Tasks</h2>
+<%= render partial: 'tasks', locals: { tasks: @completed_tasks } %>
+
+<%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %>

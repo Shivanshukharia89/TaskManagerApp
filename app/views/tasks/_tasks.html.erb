@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Due Date</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.due_date %></td>
+        <td><%= task.completed ? 'Completed' : 'Overdue' %></td>
+        <td><%= link_to 'Show', task,  class:'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_task_path(task), class:'btn btn-warning' %></td>
+        <td><%= button_to 'Complete', complete_task_path(task), method: :patch, 
+                        class: 'btn btn-success', data: { turbo: true } unless task.completed %>
+        </td>
+        <td><%= button_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
